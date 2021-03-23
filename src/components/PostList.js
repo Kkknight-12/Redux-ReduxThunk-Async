@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchPosts } from '../actions'
+import { fetchPotstAndUsers } from '../actions'
 import UserHeader from "./UserHeader";
 
 const PostList = (props) => {
@@ -8,10 +8,11 @@ const PostList = (props) => {
 
     // replacing componentDidMount with useEffect
     useEffect( ( )=> {
-        props.fetchPosts();
+        // props.fetchPosts();
+        props.fetchPotstAndUsers();
     },[]);
 
-    console.log(props.posts)
+    // console.log(props.posts)
 
     const renderPost = () => {
         console.log('i ran')
@@ -44,9 +45,11 @@ const PostList = (props) => {
 }
 
 const mapStateToProps = (state) =>{
-    console.log(state) // contain our reducer
+    // console.log(state) // contain our reducer
     return { posts: state.posts }
 }
 
 export default connect( mapStateToProps,
-    { fetchPosts: fetchPosts } )(PostList);
+    // { fetchPosts: fetchPosts } 
+    { fetchPotstAndUsers : fetchPotstAndUsers }
+    )(PostList);
